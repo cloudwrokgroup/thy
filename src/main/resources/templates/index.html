@@ -1,11 +1,72 @@
 <!DOCTYPE html>
+
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="templates :: header">
 </head>
 <body>
-this is testing by kalaiselvan.a
+<span th:replace="layout :: site-header"></span>
+<div class="container_1">
+    <div class="row" style="marign:0px 0px">
+        <div class="col-md-12">
+            <div class="panel panel-primary">
+                <!--<div class="panel-heading">Posts</div>-->
+                <div class="panel-body">
+                    <div class="col-md-10">
+                        <div class="table-responsive">
+                            <article class="well" th:each="p : ${last3Post}">
+                                <h2 class="title" th:text="${p.title}"></h2>
+                                <div class="date">
+                                    <i>Posted On</i>
+                                    <span th:text="${#dates.format(p.date,'dd/MM/yyyy')}"></span>
+                                    <span th:if="${p.author}" th:remove="tag">
+                            <i>by</i>
+                            <span th:text="${p.author.fullName!=null ? p.author.fullName : p.author.username}">
+
+                            </span>
+                        </span>
+                                </div>
+                                <p class="content" th:utext="${p.body}">Post content</p>
+                            </article>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <aside>
+                            <h2>Recent Posts</h2>
+                            <ul>
+                                <li th:each="p : ${last5Post}"><a href="#" th:text="${p.title}"
+                                                                  th:href="@{/posts/view/{id}/(id=${p.id})}"> Work
+                                    begind on
+                                    html</a>
+                                </li>
+                            </ul>
+                        </aside>
+                    </div>
+                </div>
+                <div>
+
+                    <script th:utext="'var data = ' + ${last5Post}"></script>
+                    <script>
+                        console.log(data);
+                    </script>
+                    <select multiple="multiple" name="selectedChargesList" id="selectedChargesList">
+                        <option value="">-select-</option>
+                        <option th:each="post:${last5Post}"
+                                th:selected="${last3Post.contains(post)}"
+                                th:value="${post.id}"
+                                th:text="${post.title}"></option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <span th:replace="templates :: script_include"></span>
 <span th:replace="templates :: footer"></span>
+
+<script>
+    var demo1 = $('select[name="selectedChargesList"]').bootstrapDualListbox();
+    //console.log($("#selectedChargesList").val());
+</script>
 </body>
 </html>

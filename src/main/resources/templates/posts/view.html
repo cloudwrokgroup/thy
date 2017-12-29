@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="templates :: header">
+</head>
+<body>
+<span th:replace="layout :: site-header"></span>
+<div class="container_1">
+    <div class="row" style="marign:0px 0px">
+
+        <div class="col-md-12">
+            <div class="panel panel-primary">
+                <!--<div class="panel-heading">Posts</div>-->
+                <div class="panel-body">
+                    <article>
+                        <h2 class="title" th:text="${post.title}"></h2>
+                        <div class="date">
+                            <i>Posted on</i>
+                            <span th:text="${#dates.format(post.date,'dd/MM/yyyy')}"></span>
+                            <span th:if="${post.author}" th:remove="tag">
+                            <i>by</i>
+                            <span th:text="${post.author.fullName!=null ? post.author.fullName : post.author.username}"></span>
+                        </span>
+                        </div>
+                        <p class="content" th:utext="${post.body}"></p>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<span th:replace="templates :: script_include"></span>
+<span th:replace="templates :: footer"></span>
+
+</body>
+</html>

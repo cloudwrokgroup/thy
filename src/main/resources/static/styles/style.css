@@ -3,3 +3,42 @@ body {
     margin: 0px 0px;
     padding: 0px 0px;
 }
+
+footer {
+    bottom: 0;
+    position: fixed;
+    width: 100%;
+    background: #f8f8f8;
+    padding: 12px;
+    margin: 0px 0;
+    text-align: center;
+}
+
+.container_1 {
+    margin: 4% 0%;
+    width: 100%;
+}
+ul#messages li {
+    display: block;
+    width: 80%;
+    margin: 5px auto;
+    text-align: center;
+    padding: 5px;
+    border-radius: 5px;
+}
+ul#messages li.info {
+    background: #7f7;
+}
+ul#messages li.error {
+    background: #d00;
+    color: white;
+}
+.formError {
+    color: red;
+    font-style: italic;
+}
+
+footer > div {
+    width: 100%;
+    text-align: center;
+}

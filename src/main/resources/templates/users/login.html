@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="templates :: header">
+</head>
+<body>
+<span th:replace="layout :: site-header"></span>
+<div class="container_1">
+    <div class="row" style="marign:0px 0px">
+        <div class="col-md-12">
+            <div class="panel panel-primary">
+                <!--<div class="panel-heading">Posts</div>-->
+                <div class="panel-body">
+                    <form method="post" th:object="${loginForm}">
+                        <div class="col-md-12">
+                            <div class="col-md-6 form-group">
+                                <label for="" class="col-md-5 control-label">Username</label>
+                                <div class="col-md-7"><input type="text" class="input-sm form-control" id="username"
+                                                             name="username" th:value="*{username}"/>
+                                    <span class="formError" th:if="${#fields.hasErrors('username')}"
+                                          th:errors="*{username}">Invalid username</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label for="" class="col-md-5 control-label">Password</label>
+                                <div class="col-md-7"><input type="password" class="input-sm form-control" id="password"
+                                                             name="password" th:value="*{password}"/>
+                                    <span class="formError" th:if="${#fields.hasErrors('password')}"
+                                          th:errors="*{password}">Invalid username</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <div class="pull-right">
+                                <input type="submit" class="btn btn-primary btn-sm" value="Login"/>
+                                <input type="reset" class="btn btn-warning btn-sm" value="Clear"/>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<span th:replace="templates :: script_include"></span>
+<span th:replace="templates :: footer"></span>
+</body>
+</html>
